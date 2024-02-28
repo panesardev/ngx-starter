@@ -7,10 +7,6 @@ export const routes: Routes = [
     component: IndexComponent,
   },
   {
-    path: 'about',
-    loadComponent: () => import('./routes/about/about.component'),
-  },
-  {
     path: '**',
     loadComponent: () => import('./routes/not-found/not-found.component'),
     pathMatch: 'full',
