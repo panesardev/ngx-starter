@@ -14,7 +14,7 @@ Npm scripts
 
 ```
 // start ssr application
-@ yarn start
+$ yarn start
 ```
 
 ```
