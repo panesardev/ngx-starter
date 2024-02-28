@@ -7,7 +7,12 @@
     "email": "panesar.pb08@gmail.com",
     "url": "https://panesar.dev"
   },
-  "keywords": ["Angular", "Firebase", "Tailwind", "SSR"],
+  "keywords": [
+    "Angular",
+    "Firebase",
+    "Tailwind",
+    "SSR"
+  ],
   "scripts": {
     "start": "node dist/ngx-starter/server/server.mjs",
     "dev": "ng serve",
@@ -26,6 +31,8 @@
     "@angular/platform-server": "^17.2.0",
     "@angular/router": "^17.2.0",
     "@angular/ssr": "^17.2.0",
+    "@ngxs/logger-plugin": "^3.8.2",
+    "@ngxs/store": "^3.8.2",
     "express": "^4.18.2",
     "firebase": "^10.8.0",
     "rxjs": "~7.8.0",
