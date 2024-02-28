@@ -1,12 +1,17 @@
 {
   "name": "ngx-starter",
-  "version": "0.0.0",
+  "description": "Angular server-side application",
+  "version": "1.0.0",
+  "author": {
+    "name": "Sukhpreet Singh",
+    "email": "panesar.pb08@gmail.com",
+    "url": "https://panesar.dev"
+  },
+  "keywords": ["Angular", "Firebase", "Tailwind", "SSR"],
   "scripts": {
-    "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
-    "watch": "ng build --watch --configuration development",
-    "serve:ssr:ngx-starter": "node dist/ngx-starter/server/server.mjs"
+    "start": "node dist/ngx-starter/server/server.mjs",
+    "dev": "ng serve",
+    "build": "ng build"
   },
   "private": true,
   "dependencies": {
@@ -14,6 +19,7 @@
     "@angular/common": "^17.2.0",
     "@angular/compiler": "^17.2.0",
     "@angular/core": "^17.2.0",
+    "@angular/fire": "^17.0.1",
     "@angular/forms": "^17.2.0",
     "@angular/platform-browser": "^17.2.0",
     "@angular/platform-browser-dynamic": "^17.2.0",
@@ -21,6 +27,7 @@
     "@angular/router": "^17.2.0",
     "@angular/ssr": "^17.2.0",
     "express": "^4.18.2",
+    "firebase": "^10.8.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.3"
@@ -31,6 +38,9 @@
     "@angular/compiler-cli": "^17.2.0",
     "@types/express": "^4.17.17",
     "@types/node": "^18.18.0",
+    "autoprefixer": "^10.4.17",
+    "postcss": "^8.4.35",
+    "tailwindcss": "^3.4.1",
     "typescript": "~5.3.2"
   }
 }

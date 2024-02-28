@@ -4,14 +4,13 @@ import { RouterOutlet } from '@angular/router';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [
+    RouterOutlet,
+  ],
   template: `
-    <h1>Welcome to {{title}}!</h1>
-
     <router-outlet />
   `,
-  styles: [],
 })
 export class AppComponent {
-  title = 'ngx-starter';
+
 }
