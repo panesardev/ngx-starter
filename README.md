@@ -3,10 +3,10 @@
 ## A minimal Angular project starter template
 
 - ✅ Minimalistic project structure
-- ✅ Customizable AuthService
+- ✅ Customizable titleResolver for routes
+- ✅ Customizable Firebase AuthService
 - ✅ Google authentication with custom user data
 - ✅ AuthGuard connected to firebase authentication state
-- ✅ Custom titleResolver for routes
 
 ## Scripts
 start ssr application
