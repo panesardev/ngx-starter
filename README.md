@@ -2,15 +2,13 @@
 
 ## A minimal Angular project starter template
 
-Key features
+- ✅ Minimalistic project structure
+- ✅ Customizable AuthService
+- ✅ Google authentication with custom user data
+- ✅ AuthGuard connected to firebase authentication state
+- ✅ Custom titleResolver for routes
 
-- 🆕 Uses Angular 17.2
-- 🔥 Firebase as backend database
-- ✅ Tailwind as css utility library
-- 📏 Minimalistic project structure
-
-Npm scripts
-
+# Npm scripts
 ```
 // start ssr application
 $ yarn start
