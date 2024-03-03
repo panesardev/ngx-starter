@@ -9,18 +9,18 @@
 - ✅ Custom titleResolver for routes
 
 ## Scripts
+start ssr application
 ```
-// start ssr application
 $ yarn start
 ```
 
+development server
 ```
-// development server
 $ yarn dev 
 ```
 
+build application
 ```
-// build application
 $ yarn build
 ```
 
