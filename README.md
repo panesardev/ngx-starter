@@ -1,12 +1,10 @@
-# NGX Starter
+# Minimal Angular project starter template
 
-## A minimal Angular project starter template
-
-- ✅ Minimalistic project structure
-- ✅ Customizable titleResolver for routes
-- ✅ Customizable Firebase AuthService
-- ✅ Google authentication with custom user data
-- ✅ AuthGuard connected to firebase authentication state
+✅ Minimalistic project structure
+✅ Customizable titleResolver for routes
+✅ Customizable Firebase AuthService
+✅ Google authentication with custom user data
+✅ AuthGuard connected to firebase authentication state
 
 ## Scripts
 start ssr application
