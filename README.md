@@ -8,7 +8,7 @@
 - ✅ AuthGuard connected to firebase authentication state
 - ✅ Custom titleResolver for routes
 
-# Npm scripts
+## Scripts
 ```
 // start ssr application
 $ yarn start
@@ -24,3 +24,9 @@ $ yarn dev
 $ yarn build
 ```
 
+## Rename this project
+
+replace "ngx-starter" to "your project name" in these files:
+- angular.json
+- package.json
+- src/app/app.constants.ts
