@@ -4,7 +4,7 @@
 ✅ Customizable titleResolver for routes\
 ✅ Customizable Firebase AuthService\
 ✅ Google authentication with custom user data\
-✅ AuthGuard connected to firebase authentication state\
+✅ AuthGuard connected to firebase authentication state
 
 ## Scripts
 start ssr application
