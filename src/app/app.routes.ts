@@ -9,9 +9,13 @@ export const routes: Routes = [
     title: titleResolver,
   },
   {
-    path: '**',
+    path: '404',
     loadComponent: () => import('./routes/not-found/not-found.component'),
-    pathMatch: 'full',
     title: titleResolver,
+  },
+  {
+    path: '**',
+    redirectTo: '/404',
+    pathMatch: 'full',
   }
 ];
