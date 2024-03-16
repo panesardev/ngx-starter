@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { Observable, map, of, switchMap, tap } from 'rxjs';
 import { Credentials, OAuthProviderName, getAuthProvider } from '../types/auth.interface';
 import { User, UserData, newUserData } from '../types/user.interface';
+import { User as AuthUser } from '@angular/fire/auth';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
@@ -13,7 +14,7 @@ export class AuthService {
   private router = inject(Router);
 
   readonly user$ = authState(this.auth).pipe(
-    switchMap(user => user ? this.getUser(user) : of(null)),
+    switchMap((user: AuthUser) => user ? this.getUser(user) : of(null)),
   );
 
   readonly isAuthenticated$ = this.user$.pipe(
@@ -56,9 +57,9 @@ export class AuthService {
   }
 
   async resetPassword({ email }: Credentials): Promise<void> {
-    if (!email) 
+    if (!email) {
       throw Error('Email required');
-    
+    }
     await sendPasswordResetEmail(this.auth, email);
   }
 
@@ -71,7 +72,7 @@ export class AuthService {
     await setDoc(doc(this.firestore, `users/${user.uid}`), data);
   }
 
-  getUser(user: User): Observable<User> {
+  getUser(user: AuthUser): Observable<User> {
     return docData(doc(this.firestore, `users/${user.uid}`)).pipe(
       map((data: UserData) => ({ ...user, ...data }))
     );

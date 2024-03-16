@@ -1,1 +1,1 @@
-export const BRAND = 'NGX Starter';
+export const BRAND = 'ngx-starter';
