@@ -2,10 +2,10 @@
 
 ✅ Opinionated naming and architecture\
 ✅ Minimalistic project structure\
+✅ Enabled Angular server-side rendering\
 ✅ Customizable titleResolver for routes\
 ✅ Customizable Firebase AuthService\
 ✅ Google authentication with custom user data\
-✅ AuthGuard connected to firebase authentication state
 
 ## Scripts
 start ssr application
