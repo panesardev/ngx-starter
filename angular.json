@@ -25,7 +25,7 @@
           "options": {
             "outputPath": "dist/ngx-starter",
             "index": "src/index.html",
-            "browser": "src/main.ts",
+            "browser": "src/index.ts",
             "polyfills": [
               "zone.js"
             ],
@@ -38,7 +38,7 @@
               "src/styles/index.scss"
             ],
             "scripts": [],
-            "server": "src/main.server.ts",
+            "server": "src/index.server.ts",
             "prerender": true,
             "ssr": {
               "entry": "server.ts"

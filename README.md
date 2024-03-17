@@ -1,5 +1,6 @@
 # Minimal Angular project starter template
 
+✅ Opinionated naming and architecture\
 ✅ Minimalistic project structure\
 ✅ Customizable titleResolver for routes\
 ✅ Customizable Firebase AuthService\
