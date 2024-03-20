@@ -13,7 +13,14 @@ export class AuthService {
   private router = inject(Router);
 
   readonly user$ = authState(this.auth).pipe(
-    switchMap((user: AuthUser) => user ? this.getUser(user) : of(null)),
+    switchMap((user: AuthUser) => {
+      if (user) {
+        return docData(doc(this.firestore, `users/${user.uid}`)).pipe(
+          map((data: UserData) => ({ ...user, ...data })),
+        ) as Observable<User>;
+      }
+      return of(null);
+    }),
   );
 
   async createAccount({ email, password, displayName }: Credentials): Promise<void> {
@@ -51,11 +58,5 @@ export class AuthService {
   
   async setUser(uid: string, data: UserData): Promise<void> {
     await setDoc(doc(this.firestore, `users/${uid}`), data);
-  }
-
-  getUser(user: AuthUser): Observable<User> {
-    return docData(doc(this.firestore, `users/${user.uid}`)).pipe(
-      map((data: UserData) => ({ ...user, ...data })),
-    );
   }
 }
