@@ -3,7 +3,7 @@ import { Auth, User as AuthUser, authState, createUserWithEmailAndPassword, getA
 import { Firestore, doc, docData, setDoc } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import { Observable, map, of, switchMap } from 'rxjs';
-import { Credentials, OAuthProviderName, getAuthProvider } from '../types/auth.interface';
+import { AuthData, OAuthProviderName, getAuthProvider } from '../types/auth.interface';
 import { User, UserData, newUserData } from '../types/user.interface';
 
 @Injectable({ providedIn: 'root' })
@@ -23,7 +23,7 @@ export class AuthService {
     }),
   );
 
-  async createAccount({ email, password, displayName }: Credentials): Promise<void> {
+  async createAccount({ email, password, displayName }: AuthData): Promise<void> {
     const credential = await createUserWithEmailAndPassword(this.auth, email, password);
     await Promise.all([
       updateProfile(credential.user, { displayName }), 
@@ -32,7 +32,7 @@ export class AuthService {
     ]);
   }
 
-  async login({ email, password }: Credentials): Promise<void> {
+  async login({ email, password }: AuthData): Promise<void> {
     await signInWithEmailAndPassword(this.auth, email, password);
     await this.router.navigateByUrl('/dashboard');
   }
@@ -47,7 +47,7 @@ export class AuthService {
     await this.router.navigateByUrl('/dashboard');
   }
 
-  async resetPassword({ email }: Credentials): Promise<void> {
+  async resetPassword({ email }: AuthData): Promise<void> {
     await sendPasswordResetEmail(this.auth, email);
   }
 

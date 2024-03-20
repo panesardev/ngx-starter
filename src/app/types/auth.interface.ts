@@ -1,6 +1,6 @@
 import { GoogleAuthProvider } from "firebase/auth";
 
-export interface Credentials {
+export interface AuthData {
   displayName?: string;
   email?: string;
   password?: string;
