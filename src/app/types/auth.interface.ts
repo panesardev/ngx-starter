@@ -8,7 +8,7 @@ export interface Credentials {
 
 export type OAuthProviderName = 'google';
 
-export const getAuthProvider = (name: OAuthProviderName) => {
+export function getAuthProvider(name: OAuthProviderName) {
   switch (name) {
     case 'google': return new GoogleAuthProvider();
   }

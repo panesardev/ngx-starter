@@ -5,7 +5,7 @@
 ✅ Enabled Angular server-side rendering\
 ✅ Customizable titleResolver for routes\
 ✅ Customizable Firebase AuthService\
-✅ Google authentication with custom user data\
+✅ Google authentication with custom user data
 
 ## Scripts
 start ssr application
