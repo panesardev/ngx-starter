@@ -19,7 +19,7 @@ export class AuthService {
           map((data: UserData) => ({ ...user, ...data })),
         ) as Observable<User>;
       }
-      return of(null);
+      else return of(null);
     }),
   );
 
@@ -27,7 +27,7 @@ export class AuthService {
     const credential = await createUserWithEmailAndPassword(this.auth, email, password);
     await Promise.all([
       updateProfile(credential.user, { displayName }), 
-      this.setUser(credential.user.uid, newUserData),
+      this.setUserData(credential.user.uid, newUserData),
       this.router.navigateByUrl('/dashboard'),
     ]);
   }
@@ -42,7 +42,7 @@ export class AuthService {
     const credential = await signInWithPopup(this.auth, provider);
 
     if (getAdditionalUserInfo(credential).isNewUser)
-      await this.setUser(credential.user.uid, newUserData);
+      await this.setUserData(credential.user.uid, newUserData);
 
     await this.router.navigateByUrl('/dashboard');
   }
@@ -56,7 +56,7 @@ export class AuthService {
     await this.router.navigateByUrl('/');
   }
   
-  async setUser(uid: string, data: UserData): Promise<void> {
+  async setUserData(uid: string, data: UserData): Promise<void> {
     await setDoc(doc(this.firestore, `users/${uid}`), data);
   }
 }

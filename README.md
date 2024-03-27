@@ -3,9 +3,10 @@
 ✅ Opinionated naming and architecture\
 ✅ Minimalistic project structure\
 ✅ Enabled Angular server-side rendering\
+✅ Customizable modals with lazy loading\
 ✅ Customizable titleResolver for routes\
 ✅ Customizable Firebase AuthService\
-✅ Google authentication with custom user data
+✅ Authentication with custom user data
 
 ## Scripts
 start ssr application
@@ -13,7 +14,7 @@ start ssr application
 $ yarn start
 ```
 
-development server
+start dev server
 ```
 $ yarn dev 
 ```
@@ -31,3 +32,6 @@ replace "ngx-starter" to "your project name" in these files:
 - src/app/app.constants.ts
 - src/index.html (title)
 
+## No testing frameworks
+
+Do not use this template in production as it does not have any support for testing.
