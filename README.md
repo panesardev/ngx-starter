@@ -3,8 +3,8 @@
 ✅ Opinionated naming and architecture\
 ✅ Minimalistic project structure\
 ✅ Enabled Angular server-side rendering\
-✅ Customizable modals with lazy loading\
-✅ Customizable titleResolver for routes\
+✅ Customizable Modals with lazy loading\
+✅ Customizable TitleResolver for routes\
 ✅ Customizable Firebase AuthService\
 ✅ Authentication with custom user data
 
