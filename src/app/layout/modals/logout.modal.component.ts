@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
-import { Modal } from '../../types/modal.class';
+import { Modal } from './modal.class';
 import { BaseModalComponent } from './base.modal.component';
 import { AsyncPipe } from '@angular/common';
 

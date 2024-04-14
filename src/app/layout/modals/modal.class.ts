@@ -1,5 +1,5 @@
 import { ChangeDetectorRef, inject } from "@angular/core";
-import { ModalService } from "../services/modal.service";
+import { ModalService } from "../../services/modal.service";
 
 export class Modal {
   readonly cdr = inject(ChangeDetectorRef);
