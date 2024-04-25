@@ -23,6 +23,10 @@ export class AuthService {
     }),
   );
 
+  readonly isAuthenticated$ = this.user$.pipe(
+    map(user => !!user),
+  );
+
   async createAccount({ email, password, displayName }: AuthData): Promise<void> {
     const credential = await createUserWithEmailAndPassword(this.auth, email, password);
     await Promise.all([
