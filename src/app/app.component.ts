@@ -1,8 +1,8 @@
 import { Component, inject, ViewContainerRef } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { NavbarComponent } from './layout/navbar.component';
-import { FooterComponent } from './layout/footer.component';
-import { ModalService } from './services/modal.service';
+import { NavbarComponent } from './layout/navbar/navbar.component';
+import { FooterComponent } from './layout/footer/footer.component';
+import { ModalService } from './layout/modals/modal.service';
 
 @Component({
   selector: 'app-root',
@@ -13,11 +13,11 @@ import { ModalService } from './services/modal.service';
     FooterComponent,
   ],
   template: `
-    <app-navbar/>
+    <app-navbar />
     <main>
-      <router-outlet/>
+      <router-outlet />
     </main>
-    <app-footer/>
+    <app-footer />
   `,
 })
 export class AppComponent {

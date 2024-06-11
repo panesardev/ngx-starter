@@ -1,26 +1,25 @@
 import { Injectable, inject } from '@angular/core';
 import { Router } from '@angular/router';
-import { User as AuthUser, createUserWithEmailAndPassword, getAdditionalUserInfo, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth';
-import { doc, setDoc } from 'firebase/firestore';
+import { User as AuthUser, createUserWithEmailAndPassword, getAdditionalUserInfo, getAuth, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth';
+import { doc, getFirestore, setDoc } from 'firebase/firestore';
 import { authState } from 'rxfire/auth';
 import { docData } from 'rxfire/firestore';
 import { Observable, map, of, switchMap } from 'rxjs';
-import { AUTH, FIRESTORE } from '../app.config';
-import { AuthData, OAuthProviderName, getAuthProvider } from '../types/auth.interface';
-import { User, UserData, createUserData } from '../types/user.interface';
+import { AuthUserData, OAuthProviderName } from './auth.interface';
+import { createAuthUserData, getAuthProvider } from './auth.utilities';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  private auth = inject(AUTH);
-  private firestore = inject(FIRESTORE);
+  private auth = getAuth();
+  private firestore = getFirestore();
   private router = inject(Router);
 
-  readonly user$ = authState(this.auth).pipe(
+  readonly user$: Observable<AuthUser> = authState(this.auth).pipe(
     switchMap((user: AuthUser) => {
       if (user) {
         return docData(doc(this.firestore, `users/${user.uid}`)).pipe(
-          map((data: UserData) => ({ ...user, ...data })),
-        ) as Observable<User>;
+          map((data: AuthUserData) => ({ ...user, ...data })),
+        ) as Observable<AuthUser>;
       }
       else return of(null);
     }),
@@ -30,16 +29,16 @@ export class AuthService {
     map(user => !!user),
   );
 
-  async createAccount({ email, password, displayName }: AuthData): Promise<void> {
+  async createAccount(email: string, password: string, displayName: string): Promise<void> {
     const credential = await createUserWithEmailAndPassword(this.auth, email, password);
     await Promise.all([
       updateProfile(credential.user, { displayName }), 
-      this.setUserData(credential.user.uid, createUserData()),
+      this.setUserData(credential.user.uid, createAuthUserData()),
       this.router.navigateByUrl('/dashboard'),
     ]);
   }
 
-  async login({ email, password }: AuthData): Promise<void> {
+  async login(email: string, password: string): Promise<void> {
     await signInWithEmailAndPassword(this.auth, email, password);
     await this.router.navigateByUrl('/dashboard');
   }
@@ -49,12 +48,12 @@ export class AuthService {
     const credential = await signInWithPopup(this.auth, provider);
 
     if (getAdditionalUserInfo(credential).isNewUser)
-      await this.setUserData(credential.user.uid, createUserData());
+      await this.setUserData(credential.user.uid, createAuthUserData());
 
     await this.router.navigateByUrl('/dashboard');
   }
 
-  async resetPassword({ email }: AuthData): Promise<void> {
+  async resetPassword(email: string): Promise<void> {
     await sendPasswordResetEmail(this.auth, email);
   }
 
@@ -63,7 +62,7 @@ export class AuthService {
     await this.router.navigateByUrl('/');
   }
   
-  async setUserData(uid: string, data: UserData): Promise<void> {
+  async setUserData(uid: string, data: AuthUserData): Promise<void> {
     await setDoc(doc(this.firestore, `users/${uid}`), data);
   }
 }

@@ -32,7 +32,10 @@
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
-              "src/assets"
+              {
+                "glob": "**/*",
+                "input": "src/public"
+              }
             ],
             "styles": [
               "src/styles/index.scss"
