@@ -1,9 +1,8 @@
 import type { User } from 'firebase/auth';
 
-export interface AuthUser extends User, AuthUserData {}
+export interface AuthUser extends User, AdditionalUserData {}
 
-export interface AuthUserData {
-  slugs: string[];
+export interface AdditionalUserData {
   created: string;
 }
 

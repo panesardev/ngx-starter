@@ -9,7 +9,7 @@ export class Modal {
 }
 
 @Component({
-  selector: 'modal',
+  selector: 'app-modal',
   standalone: true,
   imports: [],
   template: `

@@ -6,6 +6,8 @@ import { initializeApp as initializeFirebaseApp } from 'firebase/app';
 import { FIREBASE_CONFIG } from './app.constants';
 import { routes } from './app.routes';
 
+initializeFirebaseApp(FIREBASE_CONFIG);
+
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(
@@ -20,5 +22,3 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(withFetch()),
   ],
 };
-
-initializeFirebaseApp(FIREBASE_CONFIG);

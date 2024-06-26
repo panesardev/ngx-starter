@@ -4,9 +4,9 @@
 ✅ Minimalistic project structure\
 ✅ Enabled Angular server-side rendering\
 ✅ Customizable Modals with lazy loading\
-✅ Customizable TitleResolver for routes\
+✅ Customizable TitleResolver for pages\
 ✅ Customizable Firebase AuthService\
-✅ Authentication with custom user data
+✅ Authentication with additional user data
 
 ## Scripts
 start ssr application

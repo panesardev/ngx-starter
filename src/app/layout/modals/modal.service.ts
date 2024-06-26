@@ -11,7 +11,13 @@ export class ModalService {
     this.container = container;
   }
 
-  async open(modal: () => Promise<typeof Modal>) {
+  open(modal: typeof Modal) {
+    this.container.clear();
+    this.container.createComponent(modal);
+    this.isOpen.set(true);
+  }
+
+  async openLazy(modal: () => Promise<typeof Modal>) {
     this.container.clear();
     this.container.createComponent(await modal());
     this.isOpen.set(true);

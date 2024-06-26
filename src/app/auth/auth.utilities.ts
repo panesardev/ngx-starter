@@ -1,10 +1,9 @@
 import { GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
-import { AuthUserData, OAuthProviderName } from "./auth.interface";
+import { AdditionalUserData, OAuthProviderName } from "./auth.interface";
 
-export function createAuthUserData(): AuthUserData {
+export function createUserData(): AdditionalUserData {
   return {
-    created: new Date().toDateString().slice(3),
-    slugs: [],
+    created: new Date().toDateString(),
   };
 }
 

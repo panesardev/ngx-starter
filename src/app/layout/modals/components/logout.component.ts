@@ -4,7 +4,7 @@ import { AsyncPipe } from '@angular/common';
 import { Modal, ModalComponent } from '../modal.component';
 
 @Component({
-  selector: 'logout',
+  selector: 'app-logout',
   standalone: true,
   imports: [
     AsyncPipe,
@@ -12,7 +12,7 @@ import { Modal, ModalComponent } from '../modal.component';
   ],
   providers: [AuthService],
   template: `
-    <modal heading="Are you sure?">
+    <app-modal heading="Are you sure?">
       @if (user$ | async; as user) {
         <div class="bg-secondary text-primary flex items-center rounded-md gap-3 mb-4 px-4 py-3 cursor-pointer" routerLink="/dashboard" (click)="modal.close()">
           <img [src]="user.photoURL" alt="user" class="rounded-full w-8 h-8" fallbackImage="/assets/img/user.png">
@@ -26,7 +26,7 @@ import { Modal, ModalComponent } from '../modal.component';
         <button class="bg-secondary text-primary" (click)="modal.close()">Back</button>
         <button (click)="logout()">Logout</button>
       </div>
-    </modal>
+    </app-modal>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
