@@ -30,7 +30,7 @@ replace "ngx-starter" to "your project name" in these files:
 - angular.json
 - package.json
 - src/app/app.constants.ts
-- src/index.html (title)
+- src/index.html
 
 ## No testing frameworks
 

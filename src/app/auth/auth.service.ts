@@ -1,16 +1,17 @@
-import { Injectable } from '@angular/core';
-import { createUserWithEmailAndPassword, getAdditionalUserInfo, getAuth, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth';
-import { doc, getFirestore, setDoc } from 'firebase/firestore';
+import { inject, Injectable } from '@angular/core';
+import { createUserWithEmailAndPassword, getAdditionalUserInfo, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth';
+import { doc, setDoc } from 'firebase/firestore';
 import { user as userChanges } from 'rxfire/auth';
 import { docData as docChanges } from 'rxfire/firestore';
-import { Observable, map, of, switchMap } from 'rxjs';
-import { AuthUser, AdditionalUserData, OAuthProviderName } from './auth.interface';
+import { map, Observable, of, switchMap } from 'rxjs';
+import { Auth, Firestore } from '../app.config';
+import { AdditionalUserData, AuthUser, OAuthProviderName } from './auth.interface';
 import { createUserData, getAuthProvider } from './auth.utilities';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  private auth = getAuth();
-  private firestore = getFirestore();
+  private auth = inject(Auth);
+  private firestore = inject(Firestore);
 
   user$: Observable<AuthUser> = userChanges(this.auth).pipe(
     switchMap(user => {
@@ -19,7 +20,7 @@ export class AuthService {
           map((data: AdditionalUserData) => ({ ...user, ...data })),
         ) as Observable<AuthUser>;
       }
-      else return of(null);
+      return of(null);
     }),
   );
 
