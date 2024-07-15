@@ -32,6 +32,14 @@ replace "ngx-starter" to "your project name" in these files:
 - src/app/app.constants.ts
 - src/index.html
 
+## Change git origin
+
+Make sure to set your own git repo origin after cloning this repo.
+
+```bash
+$ git remote set-url origin "your-repo.git"
+```
+
 ## No testing frameworks
 
 Do not use this template in production as it does not have any support for testing.
