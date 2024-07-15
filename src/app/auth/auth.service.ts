@@ -4,8 +4,8 @@ import { doc, setDoc } from 'firebase/firestore';
 import { user as userChanges } from 'rxfire/auth';
 import { docData as docChanges } from 'rxfire/firestore';
 import { map, Observable, of, switchMap } from 'rxjs';
-import { Auth, Firestore } from '../app.config';
-import { AdditionalUserData, AuthUser, OAuthProviderName } from './auth.interface';
+import { Auth, Firestore } from '../app.firebase';
+import { AdditionalUserData, AuthUser, Credentials, OAuthProviderName } from './auth.interface';
 import { createUserData, getAuthProvider } from './auth.utilities';
 
 @Injectable({ providedIn: 'root' })
@@ -24,15 +24,15 @@ export class AuthService {
     }),
   );
 
-  async createAccount(email: string, password: string, displayName: string): Promise<void> {
+  async createAccount({ email, password, displayName }: Credentials): Promise<void> {
     const credential = await createUserWithEmailAndPassword(this.auth, email, password);
     await Promise.all([
       updateProfile(credential.user, { displayName }), 
-      this.setUserData(credential.user.uid, createUserData()),
+      this.setUserDoc(credential.user.uid, createUserData()),
     ]);
   }
 
-  async login(email: string, password: string): Promise<void> {
+  async login({ email, password }: Credentials): Promise<void> {
     await signInWithEmailAndPassword(this.auth, email, password);
   }
 
@@ -41,11 +41,11 @@ export class AuthService {
     const credential = await signInWithPopup(this.auth, provider);
 
     if (getAdditionalUserInfo(credential).isNewUser) {
-      await this.setUserData(credential.user.uid, createUserData());
+      await this.setUserDoc(credential.user.uid, createUserData());
     }
   }
 
-  async resetPassword(email: string): Promise<void> {
+  async resetPassword({ email }: Credentials): Promise<void> {
     await sendPasswordResetEmail(this.auth, email);
   }
 
@@ -53,7 +53,7 @@ export class AuthService {
     await signOut(this.auth);
   }
   
-  async setUserData(uid: string, data: AdditionalUserData): Promise<void> {
+  async setUserDoc(uid: string, data: AdditionalUserData): Promise<void> {
     await setDoc(doc(this.firestore, `users/${uid}`), data);
   }
 }
